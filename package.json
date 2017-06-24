@@ -1,0 +1,27 @@
+{
+  "name": "azure-iothub-receiver",
+  "version": "1.0.0",
+  "description": "friendly abstractions for processing Azure IoT Hub d2c events",
+  "main": "azure-iothub-receiver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noopkat/azure-iothub-receiver.git"
+  },
+  "keywords": [
+    "azure",
+    "iothub",
+    "eventhub"
+  ],
+  "author": "Suz Hinton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noopkat/azure-iothub-receiver/issues"
+  },
+  "homepage": "https://github.com/noopkat/azure-iothub-receiver#readme",
+  "dependencies": {
+    "azure-event-hubs": "0.0.8"
+  }
+}
