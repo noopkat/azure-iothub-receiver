@@ -1,6 +1,6 @@
 {
   "name": "azure-iothub-receiver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "friendly abstractions for processing Azure IoT Hub d2c events",
   "main": "azure-iothub-receiver.js",
   "scripts": {
