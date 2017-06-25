@@ -41,7 +41,7 @@ The options object passed in on Receiver instantiation accepts the following pro
 |Property            |Required?   |Default        |
 |--------------------|------------|---------------|
 |`connectionString`  |Yes         |               |
-|`consumerGroup`     |No          | `'$default'`  |
+|`consumerGroup`     |No          | `'$Default'`  |
 |`startTime`         |No          | `Date.now()`  |
 |`partitionFilter`   |No          |`[]`           |
 
