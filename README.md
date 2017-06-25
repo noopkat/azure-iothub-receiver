@@ -4,6 +4,8 @@ This package provides a succinct NodeJS API for receiving device-to-cloud messag
 
 It will combine receivers on all partitions (or a filtered set of partition IDs that you specify) within a consumer group, and supplies a single message event to attach a handler to.
 
+I wrote this because I found myself writing the same receiver boilerplate code for every NodeJS project that handled telemetry from devices in some way. It's not for every use case, but it's great when you just want to act on every message coming in from devices out in the field. For an example of how I'm using it, see my [study-temp project](https://github.com/noopkat/study-temp), where I use websockets to create a Twitch widget to report the temperature of my room.
+
 ## Installation
 
 1. Install [NodeJS version 4.2 or higher](http://nodejs.org)
