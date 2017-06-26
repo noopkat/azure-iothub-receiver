@@ -1,5 +1,7 @@
 # azure-iothub-receiver
 
+📟✉☁✔
+
 This package provides a succinct NodeJS API for receiving device-to-cloud messages from an Azure IoT Hub instance without a lot of boilerplate. It's fast to get up and running, but configurable where it counts if needed.
 
 It will combine receivers on all partitions (or a filtered set of partition IDs that you specify) within a consumer group, and supplies a single message event to attach a handler to.
