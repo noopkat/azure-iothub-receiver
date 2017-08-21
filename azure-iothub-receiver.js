@@ -1,20 +1,24 @@
 const EventHubsClient = require('azure-event-hubs').Client;
 const EventEmitter = require('events').EventEmitter;
 const util = require('util');
+const { Readable } = require('stream');
 
 const Receiver = function(options) {
   this.consumerGroup = options.consumerGroup || '$Default';
   this.startTime =  options.startTime || Date.now();
   this.partitionFilter = options.partitionIds || [];
+  options.objectMode = true;
 
   const connectionString = options.connectionString;
   this.ehClient = EventHubsClient.fromConnectionString(connectionString);
 
   EventEmitter.call(this);
+  Readable.call(this, options);
   this.initialise();
 };
 
 util.inherits(Receiver, EventEmitter);
+util.inherits(Receiver, Readable);
 
 Receiver.prototype.initialise = function() {
   this.ehClient
@@ -35,8 +39,14 @@ Receiver.prototype.generateReceivers = function(partitionIds) {
 };
 
 Receiver.prototype.setUpEvents = function(receiver) {
-  receiver.on('message', (message) => this.emit('message', message));
+  receiver.on('message', (message) => {
+    this.emit('message', message);
+    this.push(message);
+});
   receiver.on('errorReceived', (error) => this.emit('error', error));
+};
+
+Receiver.prototype._read = function read() {  
 };
 
 module.exports = Receiver;
