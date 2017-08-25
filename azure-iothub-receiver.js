@@ -1,7 +1,7 @@
 const EventHubsClient = require('azure-event-hubs').Client;
 const EventEmitter = require('events').EventEmitter;
 const util = require('util');
-const { Readable } = require('stream');
+const Readable = require('stream').Readable;
 
 const Receiver = function(options) {
   this.consumerGroup = options.consumerGroup || '$Default';
@@ -38,15 +38,14 @@ Receiver.prototype.generateReceivers = function(partitionIds) {
     });
 };
 
+/*Note: message we receive is an object, which will then be parsed as a string on client side.*/
 Receiver.prototype.setUpEvents = function(receiver) {
   receiver.on('message', (message) => {
-    this.emit('message', message);
-    this.push(message);
+    const streamMessage = { annotations: message.annotations, body: message.body }; 
+    this.emit('message', streamMessage);
+    this.push(streamMessage);
 });
   receiver.on('errorReceived', (error) => this.emit('error', error));
-};
-
-Receiver.prototype._read = function read() {  
 };
 
 module.exports = Receiver;
