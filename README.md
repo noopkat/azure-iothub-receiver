@@ -6,7 +6,11 @@ This package provides a succinct NodeJS API for receiving device-to-cloud messag
 
 It will combine receivers on all partitions (or a filtered set of partition IDs that you specify) within a consumer group, and supplies a single message event to attach a handler to.
 
-I wrote this because I found myself writing the same receiver boilerplate code for every NodeJS project that handled telemetry from devices in some way. It's not for every use case, but it's great when you just want to act on every message coming in from devices out in the field. For an example of how I'm using it, see my [study-temp project](https://github.com/noopkat/study-temp), where I use websockets to create a Twitch widget to report the temperature of my room.
+I wrote this because I found myself writing the same receiver boilerplate code for every NodeJS project that handled telemetry from devices in some way. It's not for every use case, but it's great when you just want to act on every message coming in from devices out in the field. 
+
+For an example of how I'm using it with a physical device, see my [study-temp project](https://github.com/noopkat/study-temp), where I use websockets to create a Twitch widget to report the temperature of my room. 
+For more examples using a simulated device, [check out the section in the CONTRIBUTING.md doc](https://github.com/noopkat/azure-iothub-receiver/blob/master/CONTRIBUTING.md#i-dont-have-a-physical-device)
+ that details the samples in the examples folder. 
 
 ## Installation
 
@@ -27,7 +31,7 @@ const options = {
 
 const receiver = new Receiver(options);
 
-receiver.on('message', (message) => {
+receiver.on('data', (message) => {
   console.log('annotations:', message.annotations);
   console.log('body:', message.body);
 });

@@ -48,4 +48,8 @@ Receiver.prototype.setUpEvents = function(receiver) {
   receiver.on('errorReceived', (error) => this.emit('error', error));
 };
 
+
+/*Note: _read is required to implement streams but isn't neccessary in our code*/
+Receiver.prototype._read = function() {};
+
 module.exports = Receiver;
